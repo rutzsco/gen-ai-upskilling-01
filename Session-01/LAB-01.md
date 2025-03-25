@@ -15,7 +15,7 @@ Replace placeholders with actual Azure OpenAI values.
 Add this request:
 
 ```http
-# Basic greeting
+### Basic greeting
 POST {{endpoint}}
 Content-Type: application/json
 api-key: {{key}}
@@ -36,7 +36,7 @@ Click “Send Request” and show the response. Discuss how `max_tokens` limits 
 Add a new request:
 
 ```http
-# Specific task
+### Specific task
 POST {{endpoint}}
 Content-Type: application/json
 api-key: {{key}}
@@ -57,7 +57,7 @@ Run it and compare with a vague prompt (e.g., "Tell me about cloud computing"). 
 Add this:
 
 ```http
-# Tone adjustment
+### Tone adjustment
 POST {{endpoint}}
 Content-Type: application/json
 api-key: {{key}}
@@ -101,7 +101,7 @@ Run it and explain how including prior messages maintains context. Add a follow-
 Test parameter effects:
 
 ```http
-# Parameter play
+### Parameter play
 POST {{endpoint}}
 Content-Type: application/json
 api-key: {{key}}
