@@ -39,7 +39,7 @@
 - **Lab 2:** Implement a question-answering pipeline that uses the knowledge base: retrieve relevant info and feed it into an LLM prompt (static RAG).
 - **Discussion and Knowledge Check:** Check understanding of RAG and embeddings.
 
-### Session 3: Agentic AI – Dynamic Retrieval and Function Calling (3 hours)
+### Session 3: Agentic AI – Dynamic Retrieval and Function Calling
 
 - **Presentation**
   - **Recap:** Quick recap of static RAG pipeline from Session 2. Identify its limitations (requires developer to anticipate and fetch info). Introduce the need for more autonomous AI agents.
