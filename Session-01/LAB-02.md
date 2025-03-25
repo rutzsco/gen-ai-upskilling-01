@@ -6,7 +6,7 @@
 
 **Example Request**:
 ```http
-POST {{endpoint}}/openai/deployments/{{deployment-name}}/chat/completions?api-version=2023-05-15
+POST {{endpoint}}
 Content-Type: application/json
 api-key: {{api-key}}
 
@@ -36,7 +36,7 @@ api-key: {{api-key}}
 
 **Example Request**:
 ```http
-POST {{endpoint}}/openai/deployments/{{deployment-name}}/chat/completions?api-version=2023-05-15
+POST {{endpoint}}
 Content-Type: application/json
 api-key: {{api-key}}
 
@@ -64,7 +64,7 @@ api-key: {{api-key}}
 
 **Example Request**:
 ```http
-POST {{endpoint}}/openai/deployments/{{deployment-name}}/chat/completions?api-version=2023-05-15
+POST {{endpoint}}
 Content-Type: application/json
 api-key: {{api-key}}
 
@@ -91,7 +91,7 @@ api-key: {{api-key}}
 
 **Example Request**:
 ```http
-POST {{endpoint}}/openai/deployments/{{deployment-name}}/chat/completions?api-version=2023-05-15
+POST {{endpoint}}
 Content-Type: application/json
 api-key: {{api-key}}
 
@@ -121,7 +121,7 @@ _"First, check if the printer is powered on. Then, ensure it’s connected to yo
 
 **Example Request**:
 ```http
-POST {{endpoint}}/openai/deployments/{{deployment-name}}/chat/completions?api-version=2023-05-15
+POST {{endpoint}}
 Content-Type: application/json
 api-key: {{api-key}}
 
@@ -163,7 +163,7 @@ api-key: {{api-key}}
 
 **Sample Request**:
 ```http
-POST {{endpoint}}/openai/deployments/{{deployment-name}}/chat/completions?api-version=2023-05-15
+POST {{endpoint}}
 Content-Type: application/json
 api-key: {{api-key}}
 
