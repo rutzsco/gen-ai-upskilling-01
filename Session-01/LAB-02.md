@@ -8,7 +8,7 @@
 ```http
 POST {{endpoint}}
 Content-Type: application/json
-api-key: {{api-key}}
+api-key: {{key}}
 
 {
   "messages": [
@@ -38,7 +38,7 @@ api-key: {{api-key}}
 ```http
 POST {{endpoint}}
 Content-Type: application/json
-api-key: {{api-key}}
+api-key: {{key}}
 
 {
   "messages": [
@@ -66,7 +66,7 @@ api-key: {{api-key}}
 ```http
 POST {{endpoint}}
 Content-Type: application/json
-api-key: {{api-key}}
+api-key: {{key}}
 
 {
   "messages": [
@@ -93,7 +93,7 @@ api-key: {{api-key}}
 ```http
 POST {{endpoint}}
 Content-Type: application/json
-api-key: {{api-key}}
+api-key: {{key}}
 
 {
   "messages": [
@@ -123,7 +123,7 @@ _"First, check if the printer is powered on. Then, ensure it’s connected to yo
 ```http
 POST {{endpoint}}
 Content-Type: application/json
-api-key: {{api-key}}
+api-key: {{key}}
 
 {
   "messages": [
