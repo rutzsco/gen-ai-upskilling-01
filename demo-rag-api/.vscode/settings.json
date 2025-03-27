@@ -1,0 +1,14 @@
+{
+    "containerApps.deploymentConfigurations": [
+        {
+            "label": "app-python",
+            "type": "AcrDockerBuildRequest",
+            "dockerfilePath": "Dockerfile",
+            "srcPath": ".",
+            "envPath": ".env",
+            "resourceGroup": "xjxjci-rg",
+            "containerApp": "app-python",
+            "containerRegistry": "xjxjciacr"
+        }
+    ]
+}

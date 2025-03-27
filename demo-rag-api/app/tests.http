@@ -1,0 +1,14 @@
+@baseUrl = http://127.0.0.1:8000
+
+### Demo - Weather  
+POST {{baseUrl}}/rag
+Content-Type: application/json
+
+{
+  "messages": [
+    {
+      "role": "User",
+      "content": "What is the part number for the oil filter?"
+    }
+  ]
+}

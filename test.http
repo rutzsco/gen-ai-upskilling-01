@@ -1,0 +1,61 @@
+@endpoint = https://rutzsco-demo-openai.openai.azure.com/openai/deployments/gpt-4o/chat/completions?api-version=2023-05-15
+@key = 5ab727c525374ea4890b3d3088b91a30
+
+
+### Basic greeting
+POST {{endpoint}}
+Content-Type: application/json
+api-key: {{key}}
+
+{
+  "messages": [
+    {"role": "system", "content": "You are a helpful assistant. in multiple paragraphs"},
+    {"role": "user", "content": "Hello! Can you tell me a fun fact about space?"}
+  ],
+  "max_tokens": 250,
+  "temperature": 1.5
+}
+
+### Specific task
+POST {{endpoint}}
+Content-Type: application/json
+api-key: {{key}}
+
+{
+  "messages": [
+    {"role": "system", "content": "You are a technical writer."},
+    {"role": "user", "content": "Write a 3-sentence summary of cloud computing for beginners."}
+  ],
+  "max_tokens": 100,
+  "temperature": 0.3
+}
+
+### Tone adjustment
+POST {{endpoint}}
+Content-Type: application/json
+api-key: {{key}}
+
+{
+  "messages": [
+    {"role": "system", "content": "You are a pirate who explains tech concepts."},
+    {"role": "user", "content": "What be a database, matey?"}
+  ],
+  "max_tokens": 150,
+  "temperature": 0.8
+}
+
+### Multi-turn simulation
+POST {{endpoint}}
+Content-Type: application/json
+api-key: {{key}}
+
+{
+  "messages": [
+    {"role": "system", "content": "You are a travel guide."},
+    {"role": "user", "content": "I’m planning a trip to Italy."},
+    {"role": "assistant", "content": "Arrivederci! Italy be a fine choice. What cities ye be wantin’ to visit?"},
+    {"role": "user", "content": "Rome"}
+  ],
+  "max_tokens": 200,
+  "temperature": 0.7
+}
