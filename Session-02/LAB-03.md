@@ -206,22 +206,33 @@ Now create the prompt templates:
 
 For `app/prompt/RAGSystemPrompt.txt`:
 ```
-You are an intelligent assistant helping professionals to diagnose and troubleshoot IT issues.
-Suggest potential guidance using only the sources provided.
-Be detailed but concise in your response.
-Each source has a name followed by the actual information, always include the source name for each fact you use in the response.
-If you cannot answer using the sources below ask the user for more information.
-If an answer to the question is provided, it must be annotated with a citation. Use square brackets to reference the source, e.g. [info1.txt]. 
-Don't combine sources, list each source separately, e.g. [info1.txt][info2.pdf]
-List all sources used in the response at the end of the response.
-If a user prompts in a non English language respond to them in their spoken language.
-Generate 3 very brief follow-up questions that the user would likely ask next. 
-Enclose the follow-up questions in double angle brackets. Example:
-<<Are there exclusions for the policy?>>
-<<Can you sumurrize the content in 3 points?>>
-<<What can I look for the policy document?>>
-Do no repeat questions that have already been asked.
-Make sure the last question ends with ">>"
+You are AutoAssist, an intelligent assistant specialized in diagnosing and troubleshooting automotive issues. Your responses must strictly use the provided sources, and adhere to the following guidelines:
+
+1. **Source-Driven Responses:**  
+   - Base all your guidance solely on the content of the provided sources.  
+   - Each fact or piece of guidance must include a citation in square brackets indicating the source name (e.g., [source1.txt]).  
+   - Do not merge or combine citations; if multiple sources are used, list each separately (e.g., [source1.txt][source2.pdf]).
+
+2. **Detailed but Concise Answers:**  
+   - Offer detailed troubleshooting steps and diagnostic guidance, yet remain concise and to the point.  
+   - Ensure that every answer directly addresses the user’s question with clear instructions.
+
+3. **Clarification Requests:**  
+   - If you cannot answer a question using the available sources, politely ask the user for more specific information.
+
+4. **Language and Tone:**  
+   - If a user submits a query in a non-English language, respond in that same language.  
+   - Maintain a professional, knowledgeable, and helpful tone at all times.
+
+5. **Follow-Up Questions:**  
+   - At the end of each response, generate three very brief follow-up questions that the user might ask next.  
+   - Enclose these follow-up questions in double angle brackets, with the final question ending with ">>".  
+   - Do not repeat questions that have already been asked.
+
+6. **Source Listing:**  
+   - At the end of your response, list all sources used.
+
+By following these guidelines, you will provide accurate, source-based automotive support that is both reliable and easy to follow.
 ```
 
 For `app/prompt/RAGSearchSystemPrompt.txt`:
@@ -337,20 +348,20 @@ class SemanticKernelService:
         vector_query = VectorizedQuery(
             vector=query_embeddings, 
             k_nearest_neighbors=5, 
-            fields="embeddings"
+            fields="text_vector"
         )
         search_results = self.search_client.search(
             search_text=None, 
             vector_queries=[vector_query], 
-            select=["sourcefile", "content"], 
+            select=["title", "chunk"], 
             top=10
         )
         
         # Format search results
         results = []
         for result in search_results:
-            source = result.get("sourcefile", "Unknown Source")
-            content = result.get("content", "No Content")
+            source = result.get("title", "Unknown Source")
+            content = result.get("chunk", "No Content")
             results.append(f"<source><name>{source}</name><content>{content}</content></source>")
         results = "\n".join(results)
 
@@ -393,8 +404,8 @@ Now, let's create our main FastAPI application in `app/main.py`:
 
 ```python
 from fastapi import FastAPI
-from .routes.workflow import router as workflow_router
-from .routes.status import router as status_router
+from app.routes.workflow import router as workflow_router
+from app.routes.status import router as status_router
 import logging
 from opentelemetry.instrumentation.fastapi import FastAPIInstrumentor
 from opentelemetry.instrumentation.requests import RequestsInstrumentor
@@ -434,18 +445,22 @@ This will start the FastAPI server with hot-reloading enabled. You can access th
 
 To test our RAG endpoint, you can use the following curl command or use the Swagger UI:
 
-```bash
-curl -X 'POST' \
-  'http://127.0.0.1:8000/rag' \
-  -H 'Content-Type: application/json' \
-  -d '{
+```rest
+
+@baseUrl = http://127.0.0.1:8000
+
+### Demo - RAG  
+POST {{baseUrl}}/rag
+Content-Type: application/json
+
+{
   "messages": [
     {
       "role": "User",
       "content": "What is the part number for the oil filter?"
     }
   ]
-}'
+}
 ```
 
 ## Key Concepts Explained
@@ -484,10 +499,3 @@ Congratulations! You've successfully built a complete RAG application using Fast
 - Integrate with Azure OpenAI using Semantic Kernel
 - Implement the RAG pattern with Azure AI Search
 - Structure your application in a maintainable way
-
-You can extend this application by:
-- Adding authentication
-- Implementing more advanced RAG techniques
-- Adding additional endpoints for different AI scenarios
-- Improving error handling and logging
-- Setting up monitoring and performance tracking
