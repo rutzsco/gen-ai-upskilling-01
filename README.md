@@ -47,7 +47,6 @@
   - **Function Calling Mechanism:** Learn about OpenAI’s function calling feature that allows an LLM to call external functions through JSON requests. How Semantic Kernel plugins relate to this (functions as skills).
   - **Agentic RAG:** Combining retrieval with function calling – enabling the AI itself to decide when to retrieve information (dynamic RAG) rather than always being given context.
 - **Lab 1:** Implement an AI “agent” that uses a function call to perform a knowledge base lookup (search) when needed (turning our RAG pipeline into a tool the AI can invoke).
-- **Lab 2:** Extend function calling to another use-case (e.g., calling a calculator or a weather API) to illustrate agents executing different functions.
 - **Discussion and Knowledge Check:** Final quiz on agents and function calling.
 
 ### Reference
